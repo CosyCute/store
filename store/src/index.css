@@ -2,3 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+.fonts-lato{
+    font-family: "Lato";
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+input{
+    outline: none;
+}
+@media (max-width: 767px) {
+    .swiper-button-prev{
+        display: none;
+    }
+    .swiper-button-next{
+        display: none;
+    }
+    .auth{
+        transform: scale(0.5);
+    }
+}

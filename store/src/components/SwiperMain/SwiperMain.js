@@ -4,21 +4,20 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-const SwiperMain = () => {
+const SwiperMain = ({mobile}) => {
     SwiperCore.use([Navigation, Pagination]);
 
-    const swiperSlides = ['block', 'block', 'block', 'block', 'block']
+    const swiperSlides = ['block', 'black', 'bleck', 'blick', 'blxck']
 
     return (
-        <div className='h-520px w-main'>
+        <section className='h-120px mobile:h-325px laptop:h-520px w-body desktop:w-main'>
             <Swiper
                 slidesPerView={1}
-                navigation={{ clickable: true }}
-                pagination={{ clickable: true }}
-            >
-                {swiperSlides.map(x => <SwiperSlide className='h-520px'>{x}</SwiperSlide>)}
+                navigation
+                pagination={{ clickable: true }}>
+                {swiperSlides.map(x => <SwiperSlide className='h-120px mobile:h-325px laptop:h-520px' key={x}>{x}</SwiperSlide>)}
             </Swiper>
-        </div>
+        </section>
     );
 };
 
