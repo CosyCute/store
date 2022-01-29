@@ -15,10 +15,12 @@ module.exports = {
         '632px': '632px',
         '620px': '620px',
         '600px': '600px',
+        '563px': '563px',
         '520px': '520px',
         '500px': '500px',
         '450px': '450px',
         '400px': '400px',
+        '340px': '340px',
         '325px': '325px',
         '317px': '317px',
         '300px': '300px',
@@ -26,6 +28,7 @@ module.exports = {
         '250px': '250px',
         '225px': '225px',
         '207px': '207px',
+        '200px': '200px',
         '185px': '185px',
         '175px': '175px',
         '167px': '167px',
@@ -44,9 +47,12 @@ module.exports = {
         '50px': '50px',
         '47px': '47px',
         '44px': '44px',
+        '41px': '41px',
+        '36px': '36px',
         '33px': '33px',
         '30px': '30px',
         '26px': '26px',
+        '23px': '23px',
         '20px': '20px',
         '15px': '15px',
         '12px': '12px',
@@ -55,6 +61,7 @@ module.exports = {
       }
     },
     colors: {
+      'red': '#FF0000',
       "input_bg": "#E2E5FF",
       'purple': '#8B97FF',
       'blue': '#2A39CE',
@@ -62,9 +69,10 @@ module.exports = {
       'gray': '#F6F6F6',
       'red': '#FF0000',
       'white': '#FFFFFF',
-      'text_gray': "#808080", 
+      'text_gray': "#808080",
       'light_gray': "#F0F2FF",
       'green': '#00BD1E',
+      'black': '#000000'
     },
     borderRadius: {
       'circle': '50%',
@@ -85,27 +93,49 @@ module.exports = {
       '12px': '12px',
       '11px': '11px',
       '10px': '10px',
+      '8px': '8px',
     },
     lineHeight: {
       '20px': '20px',
     },
     maxWidth: {
       'main': '1380px',
+      '1280px': '1280px',
       '850px': '850px',
+      '678px': '678px',
+      '563px': '563px',
       '500px': '500px',
-      '300px' : '300px',
+      '320px': '320px',
+      '300px': '300px',
+      '250px': '250px',
+      '150px': '150px',
     },
     minWidth: {
       '320px': '320px',
     },
+    maxHeight: {
+      '1/2': '50%',
+      '300px': '300px',
+      '200px': '200px',
+    },
+    minHeight: {
+
+      '80px': '80px',
+    },
     screens: {
       'mobile': '768px',
       'tablet': '868px',
+      '910px': '910px',
+      '1024px': '1024px',
       'laptop': '1134px',
       'desktop': '1400px',
     },
     translate: {
       "250px": "250px"
+    },
+    gap:{
+      '20px' : '20px',
+      '40px': '40px'
     },
   }
 }

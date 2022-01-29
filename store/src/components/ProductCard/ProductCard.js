@@ -1,27 +1,45 @@
 import React from 'react';
-import afabazol from '../../assets/afabazol.png';
 import { Link } from 'react-router-dom';
-const ProductCard = () => {
+const ProductCard = ({ el }) => {
+
+    const addToCart = () => {
+        var formdata = new FormData();
+        formdata.append("product_id", el.id);
+        formdata.append("amount", 1);
+        formdata.append("jwt", localStorage.getItem("jwt"));
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("https://d1zero.ru/api/cart/", requestOptions)
+    }
+
     return (
-        <div className='w-150px h-185px mobile:w-260px mobile:h-325px shadow-md rounded-20px mt-8 text-18px'>
-            <div className='h-1/2'><img className='m-auto' src={afabazol} alt="product" /></div>
-            <div className='h-1/2 flex'>
-                <div className='flex flex-col ml-3 mobile:ml-8'>
-                    <span className='font-semibold text-14px mobile:text-24px'>800₽</span>
-                    <span className='font-normal text-14px mobile:text-16px whitespace-nowrap'>Афабазол таблетки</span>
-                    <span className='font-medium text-11px mobile:text-16px text-text_gray'>60шт 10мг</span>
-                    <span className='font-normal text-10px mobile:text-14px text-text_gray'>Таблетки</span>
-                    <span className='font-normal text-10px mobile:text-14px text-text_gray'>Россия</span>
-                </div>
-                <Link to="/card">
-                    <div className='pt-14 -ml-14 mobile:pt-20 mobile:-ml-10'>
-                        <button
-                            className='rounded-20px bg-purple h-20px w-60px text-11px mobile:text-18px
-                            mobile:w-100px mobile:h-33px text-white text-semibold'>
-                            В корзину
-                        </button>
+        <div className='w-150px mobile:w-260px shadow-md rounded-20px text-18px box-inside product-card flex flex-col'>
+            <div className='w-full max-h-1/2 flex flex-col justify-center'>
+                <Link to={`/card/${el.id}`}>
+                    <img className='max-h-200px mx-auto' src={`https://d1zero.ru${el.image}`} alt="product" />
+                </Link>
+            </div>
+            <div className='flex grow flex-col justify-between'>
+                <Link to={`/card/${el.id}`}>
+                    <div className='flex flex-col ml-3 mobile:ml-8 mt-4'>
+                        <span className='font-semibold text-14px mobile:text-24px'>{el.price + "₽"}</span>
+                        <span className='font-normal pt-2 text-14px mobile:text-16px'>{el.name}</span>
+                        <span className='font-normal text-10px mobile:text-14px text-text_gray'>{el.category_name}</span>
                     </div>
                 </Link>
+                <div className='w-full max-h-300px h-full flex flex-col justify-end mb-2'>
+                    <button
+                        onClick={() => addToCart()}
+                        className='mx-auto rounded-20px bg-purple h-20px w-60px text-11px mobile:text-18px
+                            mobile:w-150px mobile:h-41px text-white text-semibold'>
+                        В корзину
+                    </button>
+                </div>
             </div>
         </div>
     );

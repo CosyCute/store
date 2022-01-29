@@ -10,7 +10,7 @@ const SwiperMain = ({mobile}) => {
     const swiperSlides = ['block', 'black', 'bleck', 'blick', 'blxck']
 
     return (
-        <section className='h-120px mobile:h-325px laptop:h-520px w-body desktop:w-main'>
+        <section className='h-120px mx-auto rounded-20px bg-purple mobile:h-325px laptop:h-520px w-body desktop:w-main'>
             <Swiper
                 slidesPerView={1}
                 navigation

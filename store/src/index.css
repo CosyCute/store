@@ -23,4 +23,27 @@ input{
     .auth{
         transform: scale(0.5);
     }
+    .delivery-info{
+        transform: scale(0.7);
+    }
+    .input{
+        background: transparent;
+    }
+    .box-inside{
+        box-shadow: inset 1px 1px 24px rgba(139, 151, 255, 0.2);
+    }
+}
+.wrap{
+    white-space: pre-wrap;
+}
+.bg-purple:hover{
+    transition: 0.2s;
+    background: #C5CBFF;
+}
+.bg-purple:active{
+    background: #5A6BFF;
+}
+.product-card:hover{
+    transition: 0.2s;
+    transform: scale(1.07);
 }
