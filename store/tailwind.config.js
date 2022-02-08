@@ -58,6 +58,7 @@ module.exports = {
         '12px': '12px',
         '8px': '8px',
         '2px': '2px',
+        '1px': '1px',
       }
     },
     colors: {
@@ -116,7 +117,7 @@ module.exports = {
     maxHeight: {
       '1/2': '50%',
       '300px': '300px',
-      '200px': '200px',
+      '140px': '140px',
     },
     minHeight: {
 

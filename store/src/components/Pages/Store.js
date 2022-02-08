@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import DropList from '../DropList/DropList';
 import ProductCard from '../ProductCard/ProductCard';
 import SideBar from '../SideBar/SideBar';
@@ -13,7 +14,9 @@ const categoriesArr = [
     { title: 'Набор', path: 'kit' },
     { title: 'Коробка', path: 'box' }]
 
-const Store = ({ mobile }) => {
+const Store = ({ mobile  }) => {
+
+    const categoryFilter = useParams()
 
     const [sideBar, setSideBar] = useState(false)
 
@@ -26,9 +29,9 @@ const Store = ({ mobile }) => {
     const [page, setPage] = useState(1);
 
     const currentPageFilter = () => {
-        let path = window.location.pathname.split('/store/');
-        if (path[0] === '/store') return false
-        else return categoriesArr.filter(x => x.path === path[1])[0].title
+        let path = categoryFilter.cat;
+        if (path[0] === '/store') return false 
+        else return categoriesArr.filter(x => x.path === path)[0].title
     }
 
     const filterJson = (e) => {
@@ -66,7 +69,7 @@ const Store = ({ mobile }) => {
         setFilterArr(arr)
     }
 
-    const [filterArr, setFilterArr] = useState()
+    const [filterArr, setFilterArr] = useState([])
 
     const [filters, setFilters] = useState('')
 
@@ -75,7 +78,7 @@ const Store = ({ mobile }) => {
             .then(res => res.json())
             .then(result => {
                 setJson(result);
-                setFilterArr(result);
+                setFilterArr(result.filter(x => x.category_name === currentPageFilter()));
             })
             .then(() => setLoader1(false))
         fetch(`http://d1zero.ru/api/filters/`)
@@ -83,7 +86,7 @@ const Store = ({ mobile }) => {
             .then(result => setFilters(result))
             .then(() => setLoader2(false))
 
-    }, [mobile]);
+    }, [categoryFilter]);
 
     const Loaded = () => {
         if (!loader1 && !loader2) {
@@ -126,13 +129,13 @@ const Store = ({ mobile }) => {
                         </div >
                         :
                         <div className='w-full'>
-                            <SideBar setFilterArr={setFilterArr} filterArr={json} filters={filters} sidebarActive={sideBar} setSideBarActive={setSideBar} />
+                            <SideBar filterJson={filterJson} setFilterArr={setFilterArr} json={json} filters={filters} sidebarActive={sideBar} setSideBarActive={setSideBar} />
                             <div className='flex justify-center text-white w-325px mx-auto'>
                                 <button onClick={() => setSideBar("Фильтры")} className='w-full h-41px rounded-10px bg-purple'>Фильтры</button>
-                                <button onClick={() => setSideBar("Сортировка")} className='mx-20px w-150px h-41px rounded-10px bg-purple'>Сортировка</button>
+                                {/* <button onClick={() => setSideBar("Сортировка")} className='mx-20px w-150px h-41px rounded-10px bg-purple'>Сортировка</button> */}
                             </div>
-                            <div className='grid grid-cols-2 mx-auto w-325px gap-x-20px'>
-                                {json.slice(20 * (page - 1), 20 * page).map(x => <ProductCard key={x.id} el={x} />)}
+                            <div className='grid grid-cols-2 mx-auto w-325px gap-x-20px gap-y-40px mt-41px'>
+                                {filterArr.slice(20 * (page - 1), 20 * page).map(x => <ProductCard key={x.id} el={x} />)}
                             </div>
                         </div>}
                 </div >)

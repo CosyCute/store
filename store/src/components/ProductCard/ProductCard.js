@@ -21,7 +21,7 @@ const ProductCard = ({ el }) => {
         <div className='w-150px mobile:w-260px shadow-md rounded-20px text-18px box-inside product-card flex flex-col'>
             <div className='w-full max-h-1/2 flex flex-col justify-center'>
                 <Link to={`/card/${el.id}`}>
-                    <img className='max-h-200px mx-auto' src={`https://d1zero.ru${el.image}`} alt="product" />
+                    <img className='max-h-140px mx-auto rounded-20px' src={`https://d1zero.ru${el.image}`} alt="product" />
                 </Link>
             </div>
             <div className='flex grow flex-col justify-between'>

@@ -20,17 +20,17 @@ const arr = [
 
 const Header = ({ setAuthorization, mobile }) => {
 
-    useEffect(() => {
-        var requestOptions = {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'POST',
-            redirect: 'follow',
-            body: JSON.stringify({ jwt: localStorage.getItem('jwt') })
-        };
-        fetch("https://d1zero.ru/api/user/", requestOptions)
-            .then(response => response.json())
-            .then(res => setName(res.name))
-    }, [])
+    // useEffect(() => {
+    //     var requestOptions = {
+    //         headers: { 'Content-Type': 'application/json' },
+    //         method: 'POST',
+    //         redirect: 'follow',
+    //         body: JSON.stringify({ jwt: localStorage.getItem('jwt') })
+    //     };
+    //     fetch("https://d1zero.ru/api/user/", requestOptions)
+    //         .then(response => response.json())
+    //         .then(res => setName(res.name))
+    // }, [])
 
     const [name, setName] = useState('Войти')
 
@@ -38,21 +38,21 @@ const Header = ({ setAuthorization, mobile }) => {
 
     const [hoverAuth, setHoverAuth] = useState(false)
 
-    const authorization = () => {
-        // if (name === 'Войти') setAuthorization(true)
-        // else {
-            var requestOptions = {
-                headers: { 'Content-Type': 'application/json' },
-                method: 'POST',
-                redirect: 'follow',
-                body: JSON.stringify({ jwt: localStorage.getItem('jwt') })
-            };
-            fetch("https://d1zero.ru/api/user/logout/", requestOptions)
-                .then(res => setName("Войти"))
-                .then(res => console.log(localStorage.jwt))
-                .then(res => localStorage.removeItem("jwt"))
-        // }
-    }
+    // const authorization = () => {
+    //     // if (name === 'Войти') setAuthorization(true)
+    //     // else {
+    //         var requestOptions = {
+    //             headers: { 'Content-Type': 'application/json' },
+    //             method: 'POST',
+    //             redirect: 'follow',
+    //             body: JSON.stringify({ jwt: localStorage.getItem('jwt') })
+    //         };
+    //         fetch("https://d1zero.ru/api/user/logout/", requestOptions)
+    //             .then(res => setName("Войти"))
+    //             .then(res => console.log(localStorage.jwt))
+    //             .then(res => localStorage.removeItem("jwt"))
+    //     // }
+    // }
 
     const AuthComponent = () => {
         if (name === "Войти")
@@ -70,7 +70,7 @@ const Header = ({ setAuthorization, mobile }) => {
 
     return (
         <header className='text-36px font-light flex justify-center max-w-main mx-auto'>
-            {name}
+            {/* {name} */}
             <SideBar sidebarActive={sidebarActive} setSideBarActive={setSideBarActive} setAuthorization={setAuthorization} />
             {!mobile ?
                 <div className='w-full h-137px'>
@@ -95,7 +95,7 @@ const Header = ({ setAuthorization, mobile }) => {
                                 <button className="rounded-cirlce w-30px h-30px mx-auto"><Cart /></button>
                                 <span className='text-16px'>Корзина</span>
                             </div></Link>
-                            <div onClick={() => authorization()} className='flex flex-col ml-41px'>
+                            <div onClick={() => setAuthorization(true)} className='flex flex-col ml-41px'>
                                 <button
                                     onMouseOver={() => setHoverAuth(true)}
                                     onMouseLeave={() => setHoverAuth(false)}
@@ -106,14 +106,13 @@ const Header = ({ setAuthorization, mobile }) => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="h-44px">
+                    <div className="h-44px">
                         <ul className="flex justify-between text-24px font-normal">
                             {arr.map(x => <Link key={x.title} 
-                            onClick={() => setUrlHistory([...urlHistory].push(window.location.pathname))}
-                            to={`/store/${x.name}`} 
+                            to={`/store/${x.name}`}
                             ><div>{x.title}</div></Link>)}
                         </ul>
-                    </div> */}
+                    </div>
                 </div> :
                 <div className='py-12px px-20px w-screen h-75px flex flex-col justify-between'>
                     <div className='flex justify-between'>

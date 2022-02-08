@@ -37,6 +37,8 @@ const App = () => {
         <div className='mx-0'>
           <Header setAuthorization={setAuthorization} mobile={mobile}/>
           {authorization ? <Authorization setAuthorization={setAuthorization} authorization={authorization} /> : <></>}
+          <div className='h-2px bg-light_gray'></div>
+          {/* <Path/> */}
           <main>
             <Routes>
               <Route exact path='/' element={<Main mobile={mobile} />} />
