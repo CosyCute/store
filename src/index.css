@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+.fonts-lato{
+    font-family: "Lato";
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input{
+    outline: none;
+}
+@media (max-width: 767px) {
+    .swiper-button-prev{
+        display: none;
+    }
+    .swiper-button-next{
+        display: none;
+    }
+    .auth{
+        transform: scale(0.5);
+    }
+    .input{
+        background: transparent;
+    }
+    .box-inside{
+        box-shadow: inset 1px 1px 24px rgba(139, 151, 255, 0.2);
+    }
+}
+.wrap{
+    white-space: pre-wrap;
+}
+.bg-purple:hover{
+    transition: 0.2s;
+    background: #C5CBFF;
+}
+.bg-purple:active{
+    background: #5A6BFF;
+}
+.product-card:hover{
+    transition: 0.2s;
+    transform: scale(1.07);
+}
+.loader {
+	margin: 50px auto;
+	border: 3px solid #8B97FF;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border-right-color: transparent;
+	animation: anim 1.5s linear infinite;
+}
+
+@keyframes anim {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
